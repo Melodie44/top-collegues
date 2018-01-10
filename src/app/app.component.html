@@ -28,7 +28,5 @@
 </div>
 <div id="success"></div>
 <div class="container">
-  <div *ngFor="let collegue of collegues">
-    <app-un-collegue></app-un-collegue>
-  </div>
+  <app-un-collegue [collegue]="collegue" *ngFor="let collegue of collegues"></app-un-collegue>
 </div>
