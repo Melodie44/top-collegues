@@ -3,9 +3,6 @@
   <div class="card-body">
     <h4 class="card-title">{{ collegue.nom }}</h4>
     <p class="card-text">{{ collegue.score }}</p>
-    <div class="visible-print-inline">
-      <button class="btn btn-outline-primary" (click)="jaime()">J'aime</button>
-      <button class="btn btn-outline-danger" (click)="jedeteste()">Je déteste</button>
-  </div>
+    <app-le-score [collegue]="collegue"></app-le-score>
   </div>
 </div>

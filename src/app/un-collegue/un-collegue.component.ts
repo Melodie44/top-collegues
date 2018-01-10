@@ -16,15 +16,4 @@ export class UnCollegueComponent implements OnInit {
   ngOnInit() {
   }
 
-  jaime() {
-    // événement clic sur le bouton "J'aime"
-    // => le score du collègue est augmenté de 10
-     this.collegue.score += 10;
-  }
-  jedeteste() {
-    // événement clic sur le bouton "Je déteste"
-    // => le score du collègue est diminué de 5
-    this.collegue.score -= 5;
-  }
-
 }

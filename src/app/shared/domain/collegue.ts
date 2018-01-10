@@ -1,17 +1,17 @@
 export class Collegue {
-    constructor(private _nom:string, private _urlImage:string, private _score:number){  
+    constructor(private nom:string, private urlImage:string, private score:number){  
     }
 
-    get score(){
-        return this._score;
+    get _score(){
+        return this.score;
     }
-    set score(leScore:number){
-        this._score = leScore;
+    set _score(leScore:number){
+        this.score = leScore;
     }
-    get nom(){
-        return this._nom;
+    get _nom(){
+        return this.nom;
     }
-    get urlImage(){
-        return this._urlImage;
+    get _urlImage(){
+        return this.urlImage;
     }
 }

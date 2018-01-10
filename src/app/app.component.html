@@ -9,24 +9,24 @@
       <div class="row p-3">
         <label for="pseudo" class="control-label col-md-2 font-weight-bold">Pseudo</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" placeholder="Pseudo" id="pseudo" #pseudo>
+          <input type="text" class="form-control" placeholder="Pseudo" id="pseudo" #nom>
         </div>
       </div>
       <div class="row p-3">
         <label for="imageUrl" class="control-label col-md-2 font-weight-bold">URL Image</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" placeholder="URL Image" id="imageUrl" #imageUrl>
+          <input type="text" class="form-control" placeholder="URL Image" id="imageUrl" #urlImage>
         </div>
       </div>
       <div class="form-group p-3">
         <div class="col-md-offset-2 col-md-10">
-          <button class="btn btn-primary" (click)="add(pseudo, imageUrl)">Ajouter un nouveau collègue</button>
+          <button class="btn btn-primary" (click)="add(nom, urlImage)">Ajouter un nouveau collègue</button>
         </div>
       </div>
     </form>
   </div>
 </div>
 <div id="success"></div>
-<div class="container">
+<div class="container row m-0">
   <app-un-collegue [collegue]="collegue" *ngFor="let collegue of collegues"></app-un-collegue>
 </div>
