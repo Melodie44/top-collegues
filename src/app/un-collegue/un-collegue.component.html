@@ -1,4 +1,4 @@
-<div class="card bg-light text-dark text-center" style="width:300px">
+<div class="card bg-light text-dark text-center col-sm-3">
   <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image">
   <div class="card-body">
     <h4 class="card-title">{{ collegue.nom }}</h4>
@@ -6,3 +6,9 @@
     <app-le-score [collegue]="collegue"></app-le-score>
   </div>
 </div>
+
+<style>
+  .card{
+    display: inline-block;
+  }
+</style>

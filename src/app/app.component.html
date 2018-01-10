@@ -27,6 +27,12 @@
   </div>
 </div>
 <div id="success"></div>
-<div class="container row m-0">
+<div class="container-fluid">
   <app-un-collegue [collegue]="collegue" *ngFor="let collegue of collegues"></app-un-collegue>
 </div>
+
+<style scoped>
+  .container-fluid{
+    text-align: center;
+  }
+</style>
