@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'classique', component: UnCollegueComponent},
   { path: 'tableau', component: UnCollegueTableauComponent },
   { path: 'carrousel', component: UnCollegueCarrouselComponent },
-  { path: 'detail/', component: UnCollegueDetailComponent },
+  { path: 'detail/:nom', component: UnCollegueDetailComponent },
   { path: '**', redirectTo: 'classique'} // redirige vers la route classique par défaut
   ];
 

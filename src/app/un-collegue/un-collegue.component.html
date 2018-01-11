@@ -1,5 +1,5 @@
 <div class="card bg-light text-dark text-center col-sm-3" *ngFor="let collegue of collegues">
-  <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image">
+  <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image" (click)="detail(collegue)">
   <div class="card-body">
     <h4 class="card-title">{{ collegue.nom }}</h4>
     <p class="card-text">{{ collegue.score }}</p>

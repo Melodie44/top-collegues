@@ -1,20 +1,8 @@
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-              <td></td>
-              <td>Pseudo</td>
-              <td>Score</td>
-              <td>Actions</td>
-            </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let collegue of collegues">
-            <td><img src="{{ collegue.urlImage }}" alt="Image" width="50" height="50"></td>
-            <td>{{ collegue.nom }}</td>
-            <td>{{ collegue.score }}</td>
-            <td><app-le-score [collegue]="collegue"></app-le-score></td>
-          </tr>
-        </tbody>
-    </table>
+<div class="card bg-light text-dark text-center col-sm-3">
+  <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image">
+  <div class="card-body">
+    <h4 class="card-title">{{ collegue.nom }}</h4>
+    <p class="card-text">{{ collegue.score }}</p>
+    <app-le-score [collegue]="collegue"></app-le-score>
+  </div>
 </div>

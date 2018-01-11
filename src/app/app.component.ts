@@ -38,14 +38,15 @@ export class AppComponent implements OnInit {
                  .then(result => {
                     if(result != null){
                       this.collegues.push(result);
+                      document.getElementById("success").innerHTML = "<ngb-alert type=\"success\" [dismissible]=\"false\">Le collègue "+result['nom']+" a été ajouté avec succès</ngb-alert>";
                       document.getElementById("success").setAttribute("class", "alert alert-success m-3");
-                      document.getElementById("success").innerHTML = "Le collègue "+result['nom']+" a été ajouté avec succès";
+                      //document.getElementById("success").innerHTML = "Le collègue "+result['nom']+" a été ajouté avec succès";
                    }else{
                       document.getElementById("success").setAttribute("class", "alert alert-danger m-3");
                       document.getElementById("success").innerHTML = "Le collègue existe déjà";
+                      //document.getElementById("success").innerHTML = "<ngb-alert type=\"success\" [dismissible]=\"false\">Le collègue "+result['nom']+" existe déjà </ngb-alert>";
                    }
                  });
-    //document.getElementById("success").innerHTML = "<ngb-alert type=\"success\" [dismissible]=\"false\">Le collègue "+nom.value+" a été ajouté avec succès</ngb-alert>"
     
     // TODO vider les champs de saisie
     nom.value = "";
