@@ -13,10 +13,13 @@ export class UnCollegueComponent implements OnInit {
 
   // paramètre d'entrée "collegue"
   collegues: Collegue[];
+  i:number;
 
   constructor(private cService: CollegueService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
+    this.route.params.subscribe(params => { this.i = params['i'] });
 
     this.cService.listerCollegues().then(result => {
       this.collegues = result;

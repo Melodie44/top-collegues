@@ -13,7 +13,7 @@
         <td>
           <img src="{{ collegue.urlImage }}" alt="Image" width="70" height="70">
         </td>
-        <td>{{ collegue.nom }}</td>
+        <td>{{ collegue.nom | uppercase }}</td>
         <td>{{ collegue.score }}</td>
         <td>
           <app-le-score [collegue]="collegue"></app-le-score>

@@ -27,18 +27,21 @@
   </div>
   <div id="success"></div>
 </div>
+
 <nav class="nav nav-tabs">
   <!-- la classe CSS active-link est ajouté à l'élément lorsque la route désignée est active -->
   <a class="nav-link btn btn-outline-primary" routerLink="/classique" routerLinkActive="active-link">Classique</a>
   <a class="nav-link btn btn-outline-primary" routerLink="/tableau" routerLinkActive="active-link">Tableau</a>
   <a class="nav-link btn btn-outline-primary" routerLink="/carrousel" routerLinkActive="active-link">Carrousel</a>
 </nav>
-<div class="container-fluid">
-    <router-outlet></router-outlet>
-</div>
 
-<style scoped>
-  .container-fluid{
-    text-align: center;
-  }
-</style>
+<div class="container">
+  <div class="input-group m-3">
+    <span class="input-group-addon">Limite</span>
+    <input id="limite" type="text" class="form-control" name="limite" (change)="limiter()">
+  </div>
+
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</div>

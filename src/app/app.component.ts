@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Collegue } from './shared/domain/collegue';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { CollegueService } from './shared/service/collegue.service'
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,10 @@ export class AppComponent implements OnInit {
   title = 'Top Collègues';
   // TODO Ajouter un champ collegues qui est de type Tableau de Collegue
   collegues: Collegue[];
+  i:number;
+  @Output() change:EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private cService:CollegueService, public route: ActivatedRoute){}
+  constructor(private cService:CollegueService, public route: ActivatedRoute, private router:Router){}
 
   ngOnInit() {
     // TODO alimenter le tableau de collègues avec 5 collègues possédant des scores
@@ -47,5 +50,13 @@ export class AppComponent implements OnInit {
     urlImage.value = "";
 
     return false; // pour éviter le rechargement de la page
+  }
+
+  limiter(){
+    this.change.emit('changement');
+    this.i = Number(document.getElementById("limite").innerHTML);
+    this.router.navigate(['/classique', this.i]);
+
+    return false;
   }
 }
