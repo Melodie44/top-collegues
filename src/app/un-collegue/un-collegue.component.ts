@@ -24,8 +24,8 @@ export class UnCollegueComponent implements OnInit {
   }
 
   detail(col){
-    console.log(col);
-    this.router.navigate(['detail/', {nom:col['nom']}]);
+    
+    this.router.navigate(['/detail', col['nom']]);
   }
 
 }
