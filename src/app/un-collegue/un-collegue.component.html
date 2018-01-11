@@ -1,4 +1,4 @@
-<div class="card bg-light text-dark text-center col-sm-3">
+<div class="card bg-light text-dark text-center col-sm-3" *ngFor="let collegue of collegues">
   <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image">
   <div class="card-body">
     <h4 class="card-title">{{ collegue.nom }}</h4>

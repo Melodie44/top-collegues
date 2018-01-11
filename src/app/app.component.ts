@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Collegue } from './shared/domain/collegue';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { CollegueService } from './shared/service/collegue.service'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   // TODO Ajouter un champ collegues qui est de type Tableau de Collegue
   collegues: Collegue[];
 
-  constructor(private cService:CollegueService){}
+  constructor(private cService:CollegueService, public route: ActivatedRoute){}
 
   ngOnInit() {
     // TODO alimenter le tableau de collègues avec 5 collègues possédant des scores
@@ -25,7 +25,9 @@ export class AppComponent implements OnInit {
     new Collegue('Jean', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSynJLjDmPA6KZ40sUVGRJSAc3LglJfQsh5DcoI8u41XDmnKY0Z', 20),
     new Collegue('Thomas', 'https://organicthemes.com/demo/profile/files/2012/12/profile_img.png', 60),
     new Collegue('Joseline', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI0e_XDplnyZMllLVN0LOYd3EvunlkozRo2zA9brg9-8VC-5DoUg', 10)];*/
-    this.cService.listerCollegues().then(result => this.collegues = result);
+      this.cService.listerCollegues().then(result => {
+        this.collegues = result; 
+    });
   }
 
   add(nom: HTMLInputElement, urlImage: HTMLInputElement) {

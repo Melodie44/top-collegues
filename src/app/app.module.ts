@@ -2,22 +2,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UnCollegueComponent } from './un-collegue/un-collegue.component';
 import { CollegueService } from './shared/service/collegue.service';
-import { LeScoreComponent } from './le-score/le-score.component'
+import { LeScoreComponent } from './le-score/le-score.component';
+import { UnCollegueTableauComponent } from './un-collegue-tableau/un-collegue-tableau.component';
+import { UnCollegueCarrouselComponent } from './un-collegue-carrousel/un-collegue-carrousel.component';
+import { UnCollegueDetailComponent } from './un-collegue-detail/un-collegue-detail.component'
+
+const appRoutes: Routes = [
+  { path: 'classique', component: UnCollegueComponent},
+  { path: 'tableau', component: UnCollegueTableauComponent },
+  { path: 'carrousel', component: UnCollegueCarrouselComponent },
+  { path: 'detail/', component: UnCollegueDetailComponent },
+  { path: '**', redirectTo: 'classique'} // redirige vers la route classique par défaut
+  ];
 
 @NgModule({
   declarations: [
     AppComponent,
     UnCollegueComponent,
-    LeScoreComponent
+    LeScoreComponent,
+    UnCollegueTableauComponent,
+    UnCollegueCarrouselComponent,
+    UnCollegueDetailComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [CollegueService],
   bootstrap: [AppComponent]

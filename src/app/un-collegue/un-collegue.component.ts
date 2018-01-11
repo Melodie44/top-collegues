@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
+import { ActivatedRoute } from '@angular/router';
+import { CollegueService } from '../shared/service/collegue.service'
 
 @Component({
   selector: 'app-un-collegue',
@@ -9,11 +11,16 @@ import { Collegue } from '../shared/domain/collegue';
 export class UnCollegueComponent implements OnInit {
 
   // paramètre d'entrée "collegue"
-  @Input() collegue: Collegue;
+    collegues:Collegue[];
+    collegue:Collegue;
 
-  constructor() { }
+  constructor(private cService:CollegueService, public route: ActivatedRoute) {}
 
   ngOnInit() {
+    
+    this.cService.listerCollegues().then(result => {
+      this.collegues = result; 
+    });
   }
 
 }
