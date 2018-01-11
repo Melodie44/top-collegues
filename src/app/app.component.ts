@@ -19,12 +19,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // TODO alimenter le tableau de collègues avec 5 collègues possédant des scores
     //variés
-    /*this.collegues = 
-    [new Collegue('Jade', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUB0Ng134QUKbFtlElyixg6d--dpWQLME3xG4UziTCV2Io1JR', 50),
-    new Collegue('Sarah', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN7ASemR4brCI404buAJu-ZZ3s_JKs7t2GZ04cJqPP-FnhtSTmdw', 100),
-    new Collegue('Jean', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSynJLjDmPA6KZ40sUVGRJSAc3LglJfQsh5DcoI8u41XDmnKY0Z', 20),
-    new Collegue('Thomas', 'https://organicthemes.com/demo/profile/files/2012/12/profile_img.png', 60),
-    new Collegue('Joseline', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI0e_XDplnyZMllLVN0LOYd3EvunlkozRo2zA9brg9-8VC-5DoUg', 10)];*/
       this.cService.listerCollegues().then(result => {
         this.collegues = result; 
     });

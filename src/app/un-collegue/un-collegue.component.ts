@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
 import { ActivatedRoute } from '@angular/router';
 import { CollegueService } from '../shared/service/collegue.service'
@@ -12,19 +12,19 @@ import { Router } from '@angular/router';
 export class UnCollegueComponent implements OnInit {
 
   // paramètre d'entrée "collegue"
-    collegues:Collegue[];
+  collegues: Collegue[];
 
-  constructor(private cService:CollegueService, private route: ActivatedRoute, private router:Router) {}
+  constructor(private cService: CollegueService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    
+
     this.cService.listerCollegues().then(result => {
-      this.collegues = result; 
+      this.collegues = result;
     });
   }
 
-  detail(col){
-    
+  detail(col) {
+
     this.router.navigate(['/detail', col['nom']]);
   }
 
