@@ -1,8 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
 import { ActivatedRoute } from '@angular/router';
 import { CollegueService } from '../shared/service/collegue.service'
 import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-un-collegue',
@@ -12,18 +13,25 @@ import { Router } from '@angular/router';
 export class UnCollegueComponent implements OnInit {
 
   // paramètre d'entrée "collegue"
-  collegues: Collegue[];
-  i:number;
+  collegues:Collegue[];
 
-  constructor(private cService: CollegueService, private route: ActivatedRoute, private router: Router) { }
+  i: number;
+
+  constructor(private cService: CollegueService, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
 
-    this.route.params.subscribe(params => { this.i = params['i'] });
+    this.cService.listerCollegues()
+                 .subscribe(c => this.collegues = c, e => e);
+    
 
-    this.cService.listerCollegues().then(result => {
+    /*this.cService.listerCollegues().then(result => {
       this.collegues = result;
-    });
+
+      this.i = this.collegues.length;
+      
+    });*/
   }
 
   detail(col) {

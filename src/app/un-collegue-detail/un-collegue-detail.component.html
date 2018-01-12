@@ -2,7 +2,7 @@
   <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image">
   <div class="card-body">
     <h4 class="card-title">{{ collegue.nom | uppercase }}</h4>
-    <p class="card-text">{{ collegue.score }}</p>
+    <p class="card-text" [ngStyle]="{'color': collegue.score > 0 ? 'green' : (collegue.score == 0 ? 'black' : 'red')} ">{{ collegue.score | score }}</p>
     <app-le-score [collegue]="collegue"></app-le-score>
   </div>
 </div>

@@ -14,7 +14,8 @@ import { UnCollegueDetailComponent } from './un-collegue-detail/un-collegue-deta
 import { ScorePipe } from './shared/pipe/score.pipe'
 
 const appRoutes: Routes = [
-  { path: 'classique/:i', component: UnCollegueComponent},
+  { path: 'classique', component: UnCollegueComponent},
+  //{ path: 'classique/:i', component: UnCollegueComponent},
   { path: 'tableau', component: UnCollegueTableauComponent },
   { path: 'carrousel', component: UnCollegueCarrouselComponent },
   { path: 'detail/:nom', component: UnCollegueDetailComponent },

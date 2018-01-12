@@ -20,8 +20,10 @@ export class LeScoreComponent implements OnInit {
   jaime() {
     // événement clic sur le bouton "J'aime"
     // => le score du collègue est augmenté de 10
+    /*this.cService.aimerUnCollegue(this.collegue)
+                 .then(result => this.collegue['score'] = result['score'] );*/
     this.cService.aimerUnCollegue(this.collegue)
-                 .then(result => this.collegue['score'] = result['score'] );
+                 .subscribe(s => this.collegue['score'] = s['score'])
 
     return false; // pour éviter le rechargement de la page
   }
@@ -29,9 +31,11 @@ export class LeScoreComponent implements OnInit {
   jedeteste() {
     // événement clic sur le bouton "Je déteste"
     // => le score du collègue est diminué de 5
+    /*this.cService.detesterUnCollegue(this.collegue)
+                 .then(result => this.collegue['score'] = result['score']);*/
     this.cService.detesterUnCollegue(this.collegue)
-                 .then(result => this.collegue['score'] = result['score']);
-  
+                 .subscribe(s => this.collegue['score'] = s['score'])
+                 
     return false; // pour éviter le rechargement de la page         
   }
 

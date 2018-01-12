@@ -9,12 +9,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let collegue of collegues" (click)="detail(collegue)">
-        <td>
+      <tr *ngFor="let collegue of collegues">
+        <td (click)="detail(collegue)">
           <img src="{{ collegue.urlImage }}" alt="Image" width="70" height="70">
         </td>
         <td>{{ collegue.nom | uppercase }}</td>
-        <td>{{ collegue.score }}</td>
+        <td [ngStyle]="{'color': collegue.score > 0 ? 'green' : (collegue.score == 0 ? 'black' : 'red')} ">{{ collegue.score | score }}</td>
         <td>
           <app-le-score [collegue]="collegue"></app-le-score>
         </td>

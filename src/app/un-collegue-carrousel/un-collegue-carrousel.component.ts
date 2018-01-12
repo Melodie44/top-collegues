@@ -18,9 +18,11 @@ export class UnCollegueCarrouselComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cService.listerCollegues().then(result => {
+    /*this.cService.listerCollegues().then(result => {
       this.collegues = result;
-    });
+    });*/
+    this.cService.listerCollegues()
+                 .subscribe(c => this.collegues = c, e => console.log(e));
   }
 
   detail(col) {

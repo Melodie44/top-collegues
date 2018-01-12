@@ -1,9 +1,9 @@
 <ngb-carousel style="background-color:#ddd">
     <ng-template ngbSlide *ngFor="let collegue of collegues">
-        <div (click)="detail(collegue)">
-            <img src="{{ collegue.urlImage }}" alt="Image" width="inherite" height="500">
+        <div>
+            <img src="{{ collegue.urlImage }}" alt="Image" width="inherite" height="500" (click)="detail(collegue)">
             <div class="carousel-caption">
-                <h1>{{ collegue.score }}</h1>
+                <h1 [ngStyle]="{'color': collegue.score > 0 ? 'green' : (collegue.score == 0 ? 'black' : 'red')} ">{{ collegue.score | score }}</h1>
                 <app-le-score [collegue]="collegue"></app-le-score>
             </div>
         </div>
