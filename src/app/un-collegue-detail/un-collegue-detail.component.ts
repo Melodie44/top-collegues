@@ -27,7 +27,7 @@ export class UnCollegueDetailComponent implements OnInit {
         this.collegue = result.find(c => c['nom'] == this.pseudo);
       });*/
       this.cService.listerCollegues()
-                 .subscribe(list => this.collegue = list.find(c => c['nom'] == this.pseudo, e => console.log(e));
+                 .subscribe(list => this.collegue = list.find(c => c['nom'] == this.pseudo, e => console.log(e)));
   }
 
 }

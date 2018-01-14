@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   title = 'Top Collègues';
   // TODO Ajouter un champ collegues qui est de type Tableau de Collegue
   collegues: Collegue[];
-  i: number;
   success: HTMLDivElement;
 
   constructor(private cService: CollegueService, public route: ActivatedRoute, private router: Router) { }
@@ -62,15 +61,5 @@ export class AppComponent implements OnInit {
     urlImage.value = "";
 
     return false; // pour éviter le rechargement de la page
-  }
-
-  limiter(event) {
-
-    this.i = event.target.value;
-    console.log(this.i);
-
-    this.router.navigate(['/classique']);
-
-    return false;
   }
 }

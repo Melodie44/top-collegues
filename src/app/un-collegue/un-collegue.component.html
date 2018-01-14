@@ -1,5 +1,6 @@
-<div class="card bg-light text-dark text-center col-sm-3" *ngFor="let collegue of collegues ">
-  <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image" height="270" (click)="detail(collegue)">
+<app-filtre (lim)="limiter($event)" (fil)="filtrer($event)"></app-filtre>
+<div class="card bg-light text-dark text-center col-sm-4" *ngFor="let collegue of collegues | slice:0:limite">
+  <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image" (click)="detail(collegue)">
   <div class="card-body">
     <h4 class="card-title">{{ collegue.nom | uppercase }}</h4>
     <p class="card-text" [ngStyle]="{'color': collegue.score > 0 ? 'green' : (collegue.score == 0 ? 'black' : 'red')} ">{{ collegue.score | score }}</p>

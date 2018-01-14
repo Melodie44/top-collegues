@@ -11,7 +11,8 @@ import { LeScoreComponent } from './le-score/le-score.component';
 import { UnCollegueTableauComponent } from './un-collegue-tableau/un-collegue-tableau.component';
 import { UnCollegueCarrouselComponent } from './un-collegue-carrousel/un-collegue-carrousel.component';
 import { UnCollegueDetailComponent } from './un-collegue-detail/un-collegue-detail.component';
-import { ScorePipe } from './shared/pipe/score.pipe'
+import { ScorePipe } from './shared/pipe/score.pipe';
+import { FiltreComponent } from './filtre/filtre.component'
 
 const appRoutes: Routes = [
   { path: 'classique', component: UnCollegueComponent},
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     UnCollegueTableauComponent,
     UnCollegueCarrouselComponent,
     UnCollegueDetailComponent,
-    ScorePipe
+    ScorePipe,
+    FiltreComponent
   ],
   imports: [
     BrowserModule,

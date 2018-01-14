@@ -13,6 +13,7 @@ export class UnCollegueTableauComponent implements OnInit {
 
   collegues: Collegue[];
   collegue: Collegue;
+  limite: number;
 
   constructor(private cService: CollegueService, public route: ActivatedRoute, private router: Router) { }
 
@@ -28,6 +29,22 @@ export class UnCollegueTableauComponent implements OnInit {
   detail(col) {
 
     this.router.navigate(['/detail', col['nom']]);
+  }
+
+  limiter(event) {
+    if (event != '') {
+      this.limite = event;
+    }else{
+      this.limite = this.collegues.length;
+    }
+  }
+
+  filtrer(event) {
+    if (event != '') {
+      this.collegues = this.collegues.filter(c => c['nom'].startsWith(event.toUpperCase()))
+    }else{
+      this.ngOnInit();
+    }
   }
 
 }

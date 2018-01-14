@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
 import { ActivatedRoute } from '@angular/router';
 import { CollegueService } from '../shared/service/collegue.service'
@@ -13,9 +13,8 @@ import { Observable, Subject } from 'rxjs';
 export class UnCollegueComponent implements OnInit {
 
   // paramètre d'entrée "collegue"
-  collegues:Collegue[];
-
-  i: number;
+  collegues: Collegue[];
+  limite: number;
 
   constructor(private cService: CollegueService, private route: ActivatedRoute, private router: Router) {
   }
@@ -23,13 +22,13 @@ export class UnCollegueComponent implements OnInit {
   ngOnInit() {
 
     this.cService.listerCollegues()
-                 .subscribe(c => this.collegues = c, e => e);
-    
+      .subscribe(c => {
+        this.limite = c.length;
+        this.collegues = c
+      }, e => e);
 
     /*this.cService.listerCollegues().then(result => {
       this.collegues = result;
-
-      this.i = this.collegues.length;
       
     });*/
   }
@@ -37,6 +36,22 @@ export class UnCollegueComponent implements OnInit {
   detail(col) {
 
     this.router.navigate(['/detail', col['nom']]);
+  }
+
+  limiter(event) {
+    if (event != '') {
+      this.limite = event;
+    }else{
+      this.limite = this.collegues.length;
+    }
+  }
+
+  filtrer(event) {
+    if (event != '') {
+      this.collegues = this.collegues.filter(c => c['nom'].startsWith(event.toUpperCase()))
+    }else{
+      this.ngOnInit();
+    }
   }
 
 }

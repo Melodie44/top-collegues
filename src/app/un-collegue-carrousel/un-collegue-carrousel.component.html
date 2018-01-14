@@ -1,5 +1,6 @@
+<app-filtre (lim)="limiter($event)" (fil)="filtrer($event)"></app-filtre>
 <ngb-carousel style="background-color:#ddd">
-    <ng-template ngbSlide *ngFor="let collegue of collegues">
+    <ng-template ngbSlide *ngFor="let collegue of collegues | slice:0:limite">
         <div>
             <img src="{{ collegue.urlImage }}" alt="Image" width="inherite" height="500" (click)="detail(collegue)">
             <div class="carousel-caption">

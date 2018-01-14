@@ -1,3 +1,4 @@
+<app-filtre (lim)="limiter($event)" (fil)="filtrer($event)"></app-filtre>
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -9,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let collegue of collegues">
+      <tr *ngFor="let collegue of collegues | slice:0:limite">
         <td (click)="detail(collegue)">
           <img src="{{ collegue.urlImage }}" alt="Image" width="70" height="70">
         </td>
