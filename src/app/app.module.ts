@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common'
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,7 +14,8 @@ import { UnCollegueCarrouselComponent } from './un-collegue-carrousel/un-collegu
 import { UnCollegueDetailComponent } from './un-collegue-detail/un-collegue-detail.component';
 import { ScorePipe } from './shared/pipe/score.pipe';
 import { FiltreComponent } from './filtre/filtre.component';
-import { DernierAvisComponent } from './dernier-avis/dernier-avis.component'
+import { DernierAvisComponent } from './dernier-avis/dernier-avis.component';
+import { HorsEnLigneComponent } from './hors-en-ligne/hors-en-ligne.component'
 
 const appRoutes: Routes = [
   { path: 'classique', component: UnCollegueComponent},
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     UnCollegueDetailComponent,
     ScorePipe,
     FiltreComponent,
-    DernierAvisComponent
+    DernierAvisComponent,
+    HorsEnLigneComponent
   ],
   imports: [
     BrowserModule,

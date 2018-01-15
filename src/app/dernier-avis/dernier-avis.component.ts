@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Collegue } from '../shared/domain/collegue';
 
 @Component({
   selector: 'app-dernier-avis',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DernierAvisComponent implements OnInit {
 
-  constructor() { }
+  @Input() collegue: Collegue;
+  @Input() aimerOuDetester: string;
+
+  constructor() { 
+
+  }
 
   ngOnInit() {
+    console.log(this.aimerOuDetester)
   }
 
 }

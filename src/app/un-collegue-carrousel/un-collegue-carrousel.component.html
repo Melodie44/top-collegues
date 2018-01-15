@@ -1,4 +1,5 @@
 <app-filtre (lim)="limiter($event)" (fil)="filtrer($event)"></app-filtre>
+<app-dernier-avis></app-dernier-avis>
 <ngb-carousel style="background-color:#ddd">
     <ng-template ngbSlide *ngFor="let collegue of collegues | slice:0:limite">
         <div>
@@ -10,3 +11,4 @@
         </div>
     </ng-template>
 </ngb-carousel>
+<app-dernier-avis></app-dernier-avis>

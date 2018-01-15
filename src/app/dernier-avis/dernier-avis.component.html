@@ -1,4 +1,11 @@
-<div class="alert alert-secondary">
-  Aucun vote
-</div>
-  
+<span [ngSwitch]="aimerOuDetester">
+  <span *ngSwitchCase="aime">
+    <div class="alert alert-success">J'aime {{ collegue.nom }}</div>
+  </span>
+  <span *ngSwitchCase="deteste">
+    <div class="alert alert-danger">Je déteste {{ collegue.nom }}</div>
+  </span>
+  <span *ngSwitchDefault>
+    <div class="alert alert-secondary">Aucun vote</div>
+  </span>
+</span>

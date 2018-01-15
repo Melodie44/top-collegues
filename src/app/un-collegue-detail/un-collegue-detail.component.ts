@@ -15,19 +15,15 @@ export class UnCollegueDetailComponent implements OnInit {
   collegue: Collegue;
 
   constructor(private cService: CollegueService, private route: ActivatedRoute) {
-    
+
   }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => { this.pseudo = params['nom'] });
 
-    /*this.cService.listerCollegues()
-      .then(result => {
-        this.collegue = result.find(c => c['nom'] == this.pseudo);
-      });*/
-      this.cService.listerCollegues()
-                 .subscribe(list => this.collegue = list.find(c => c['nom'] == this.pseudo, e => console.log(e)));
+    this.cService.listerCollegues()
+      .subscribe(list => this.collegue = list.find(c => c['nom'] == this.pseudo));
   }
 
 }

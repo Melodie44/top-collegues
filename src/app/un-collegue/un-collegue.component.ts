@@ -3,7 +3,7 @@ import { Collegue } from '../shared/domain/collegue';
 import { ActivatedRoute } from '@angular/router';
 import { CollegueService } from '../shared/service/collegue.service'
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Component({
@@ -16,6 +16,7 @@ export class UnCollegueComponent implements OnInit {
   // paramètre d'entrée "collegue"
   collegues: Collegue[];
   limite: number;
+  aimerOuDetester: string = "";
 
   constructor(private cService: CollegueService, private route: ActivatedRoute, private router: Router) {
   }
@@ -30,7 +31,6 @@ export class UnCollegueComponent implements OnInit {
   }
 
   detail(col) {
-
     this.router.navigate(['/detail', col['nom']]);
   }
 
@@ -48,6 +48,11 @@ export class UnCollegueComponent implements OnInit {
     }else{
       this.ngOnInit();
     }
+  }
+
+  action(event){
+    console.log(event)
+    this.aimerOuDetester = event;
   }
 
 }

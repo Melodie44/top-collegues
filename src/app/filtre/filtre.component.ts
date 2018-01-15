@@ -16,7 +16,6 @@ export class FiltreComponent implements OnInit {
   }
 
   limiter(limite: HTMLInputElement) {
-    console.log(limite.value);
     this.lim.emit(Number(limite.value));
   }
 

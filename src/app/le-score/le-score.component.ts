@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
 import { CollegueService } from '../shared/service/collegue.service';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-le-score',
@@ -11,6 +12,7 @@ export class LeScoreComponent implements OnInit {
 
    // paramètre d'entrée "collegue"
    @Input() collegue: Collegue;
+   @Output() choix: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private cService:CollegueService) { }
 
@@ -20,23 +22,15 @@ export class LeScoreComponent implements OnInit {
   jaime() {
     // événement clic sur le bouton "J'aime"
     // => le score du collègue est augmenté de 10
-    /*this.cService.aimerUnCollegue(this.collegue)
-                 .then(result => this.collegue['score'] = result['score'] );*/
-    this.cService.aimerUnCollegue(this.collegue)
-                 .subscribe(s => this.collegue['score'] = s['score'])
-
-    return false; // pour éviter le rechargement de la page
+    this.cService.aimerUnCollegue(this.collegue);
+    this.choix.emit("aime");
   }
 
   jedeteste() {
     // événement clic sur le bouton "Je déteste"
     // => le score du collègue est diminué de 5
-    /*this.cService.detesterUnCollegue(this.collegue)
-                 .then(result => this.collegue['score'] = result['score']);*/
-    this.cService.detesterUnCollegue(this.collegue)
-                 .subscribe(s => this.collegue['score'] = s['score'])
-                 
-    return false; // pour éviter le rechargement de la page         
+    this.cService.detesterUnCollegue(this.collegue);
+    this.choix.emit("deteste");             
   }
 
 }
