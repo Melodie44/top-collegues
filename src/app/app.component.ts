@@ -4,6 +4,7 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { CollegueService } from './shared/service/collegue.service'
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Component({
   selector: 'app-root',
@@ -22,40 +23,24 @@ export class AppComponent implements OnInit {
     // TODO alimenter le tableau de collègues avec 5 collègues possédant des scores
     //variés
     this.cService.listerCollegues()
-      .subscribe(c => this.collegues = c, e => e);
+      .subscribe(c => this.collegues = c);
   }
 
   add(nom: HTMLInputElement, urlImage: HTMLInputElement) {
     // pour récupérer la valeur saisie, utiliser la propriété value
     // exemple => pseudo.value
     // TODO ajouter au tableau un nouveau collègue
+    if (this.collegues.find(c => c['nom'] == nom.value) == undefined) {
 
-    /*this.cService.sauvegarder(new Collegue(nom.value, urlImage.value, 0))
-                 .then(result => {
-                    if(result != null){
-                      this.collegues.push(result);
-                      document.getElementById("success").innerHTML = "<ngb-alert type=\"success\" [dismissible]=\"false\">Le collègue "+result['nom']+" a été ajouté avec succès</ngb-alert>";
-                      document.getElementById("success").setAttribute("class", "alert alert-success m-3");
-                      //document.getElementById("success").innerHTML = "Le collègue "+result['nom']+" a été ajouté avec succès";
-                   }else{
-                      document.getElementById("success").setAttribute("class", "alert alert-danger m-3");
-                      document.getElementById("success").innerHTML = "Le collègue existe déjà";
-                      //document.getElementById("success").innerHTML = "<ngb-alert type=\"success\" [dismissible]=\"false\">Le collègue "+result['nom']+" existe déjà </ngb-alert>";
-                   }
-                 });*/
-    this.cService.sauvegarder(new Collegue(nom.value, urlImage.value, 0))
-      .subscribe(c => {
-        if (c != null) {
-          this.collegues.push(c);
-          document.getElementById("success").setAttribute("class", "alert alert-success m-3");
-          document.getElementById("success").innerHTML = "Le collègue " + c['nom'] + " a été ajouté avec succès";
-        }else{
-          document.getElementById("success").setAttribute("class", "alert alert-danger m-3");
-          document.getElementById("success").innerHTML = "Le collègue "+c['nom']+" existe déjà";
-        }
-        
-      }, e => { console.log(e) }
-      );
+      this.cService.sauvegarder(new Collegue(nom.value, urlImage.value, 0))
+
+      document.getElementById("success").setAttribute("class", "alert alert-success m-3");
+      document.getElementById("success").innerHTML = "Le collègue " + nom.value + " a été ajouté avec succès";
+    } else {
+      document.getElementById("success").setAttribute("class", "alert alert-danger m-3");
+      document.getElementById("success").innerHTML = "Le collègue " + nom.value + " existe déjà";
+    }
+
     // TODO vider les champs de saisie
     nom.value = "";
     urlImage.value = "";

@@ -2,41 +2,38 @@ import { Injectable } from '@angular/core';
 import { Collegue } from '../domain/collegue';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http'
-import { Observable, Subject, ReplaySubject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http/src/response';
 
 @Injectable()
 export class CollegueService {
 
-  init:Observable<Collegue[]>
-  subject:ReplaySubject<Collegue[]>
+  init: Observable<Collegue[]>
+  collegues: BehaviorSubject<Collegue[]> = new BehaviorSubject([]);
+  response: boolean;
 
-  constructor(private http:HttpClient) { 
-     
-    // Initialisation de la liste collegues
-    this.refresh();
+  constructor(private http: HttpClient) {
+    this.refreshData();
   }
 
-  refresh(){
-    // Initialisation de la liste collegues
-    this.init = Observable.from(this.http.get<Collegue[]>('http://localhost:8080/collegues'));
-    this.subject = new ReplaySubject();
-    this.init.subscribe(this.subject);
+  refreshData() {
+    this.http.get<Collegue[]>('http://localhost:8080/collegues')
+      .subscribe(collegues => { this.collegues.next(collegues) })
   }
 
   listerCollegues(): Observable<Collegue[]> {
     // récupérer la liste des collègues côté serveur
-    let res1 = Observable.from(this.http.get<Collegue[]>('http://localhost:8080/collegues'));
-    return res1;
+    return this.collegues.asObservable();
   }
 
-  sauvegarder(newCollegue:Collegue): Observable<Collegue> {
+  sauvegarder(newCollegue: Collegue): void {
     // TODO sauvegarder le nouveau collègue côté serveur
+    this.response = false;
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    let res2 = Observable.from(this.http.post<Collegue>('http://localhost:8080/collegues', JSON.stringify(newCollegue), httpOptions));
-    
-    return res2;
+    this.http.post<Collegue[]>('http://localhost:8080/collegues', JSON.stringify(newCollegue), httpOptions)
+    .subscribe(c => this.collegues.next(c));
   }
 
   aimerUnCollegue(unCollegue: Collegue): Observable<Collegue> {
@@ -44,8 +41,8 @@ export class CollegueService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    let body = {"action":"aimer"};
-    const res3 = Observable.from(this.http.patch<Collegue>('http://localhost:8080/collegues/'+unCollegue['nom']+'/', body, httpOptions));
+    let body = { "action": "aimer" };
+    const res3 = Observable.from(this.http.patch<Collegue>('http://localhost:8080/collegues/' + unCollegue['nom'] + '/', body, httpOptions));
     return res3;
   }
   detesterUnCollegue(unCollegue: Collegue): Observable<Collegue> {
@@ -53,8 +50,8 @@ export class CollegueService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    let body = {"action":"detester"};
-    const res4 = Observable.from(this.http.patch<Collegue>('http://localhost:8080/collegues/'+unCollegue['nom']+'/', body, httpOptions));
+    let body = { "action": "detester" };
+    const res4 = Observable.from(this.http.patch<Collegue>('http://localhost:8080/collegues/' + unCollegue['nom'] + '/', body, httpOptions));
     return res4;
   }
 }

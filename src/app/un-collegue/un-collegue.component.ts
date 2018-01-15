@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CollegueService } from '../shared/service/collegue.service'
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Component({
   selector: 'app-un-collegue',
@@ -24,13 +25,8 @@ export class UnCollegueComponent implements OnInit {
     this.cService.listerCollegues()
       .subscribe(c => {
         this.limite = c.length;
-        this.collegues = c
-      }, e => e);
-
-    /*this.cService.listerCollegues().then(result => {
-      this.collegues = result;
-      
-    });*/
+        this.collegues = c;
+      });
   }
 
   detail(col) {
