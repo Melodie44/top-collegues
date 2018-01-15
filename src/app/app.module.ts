@@ -12,11 +12,11 @@ import { UnCollegueTableauComponent } from './un-collegue-tableau/un-collegue-ta
 import { UnCollegueCarrouselComponent } from './un-collegue-carrousel/un-collegue-carrousel.component';
 import { UnCollegueDetailComponent } from './un-collegue-detail/un-collegue-detail.component';
 import { ScorePipe } from './shared/pipe/score.pipe';
-import { FiltreComponent } from './filtre/filtre.component'
+import { FiltreComponent } from './filtre/filtre.component';
+import { DernierAvisComponent } from './dernier-avis/dernier-avis.component'
 
 const appRoutes: Routes = [
   { path: 'classique', component: UnCollegueComponent},
-  //{ path: 'classique/:i', component: UnCollegueComponent},
   { path: 'tableau', component: UnCollegueTableauComponent },
   { path: 'carrousel', component: UnCollegueCarrouselComponent },
   { path: 'detail/:nom', component: UnCollegueDetailComponent },
@@ -32,7 +32,8 @@ const appRoutes: Routes = [
     UnCollegueCarrouselComponent,
     UnCollegueDetailComponent,
     ScorePipe,
-    FiltreComponent
+    FiltreComponent,
+    DernierAvisComponent
   ],
   imports: [
     BrowserModule,
