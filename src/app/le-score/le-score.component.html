@@ -1,4 +1,25 @@
 <div class="visible-print-inline">
   <button class="btn btn-outline-primary" (click)="jaime()">J'aime</button>
   <button class="btn btn-outline-danger" (click)="jedeteste()">Je déteste</button>
+  <div class="btn btn-outline-success m-3" (click)="commenter(content)">Rédiger un commentaire</div>
 </div>
+
+<!-- fenêtre modal, ajout commentaire-->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Votre Avis</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form (ngSubmit)="submit()">
+    <div class="modal-body">
+      <h5>Que Pensez-vous ?</h5>
+      <textarea [(ngModel)]="comment.avis.message" #avis="ngModel" rows="7" cols="60"></textarea>
+      <div class="text-muted">Veuillez saisir votre avis avec un minimum de 10 caractères et un maximum de 255 caractères</div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+  </form>
+</ng-template>

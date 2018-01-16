@@ -1,13 +1,20 @@
-<app-filtre (lim)="limiter($event)" (fil)="filtrer($event)"></app-filtre>
-<app-dernier-avis [collegue]="collegue" [aimerOuDetester]="aimerOuDetester"></app-dernier-avis>
-<hr>
-<div class="card bg-light text-dark text-center col-sm-4" *ngFor="let collegue of collegues | slice:0:limite">
-  <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image" (click)="detail(collegue)">
-  <div class="card-body">
-    <h4 class="card-title">{{ collegue.nom | uppercase }}</h4>
-    <p class="card-text" [ngStyle]="{'color': collegue.score > 0 ? 'green' : (collegue.score == 0 ? 'black' : 'red')}">{{ collegue.score | score }}</p>
-    <app-le-score [collegue]="collegue" (choix)="action($event)"></app-le-score>
+<div class="row">
+  <div class="col-9">
+    <app-filtre (lim)="limiter($event)" (fil)="filtrer($event)"></app-filtre>
+    <app-dernier-avis [collegue]="collegue" [aimerOuDetester]="aimerOuDetester"></app-dernier-avis>
+    <hr>
+    <div class="card bg-light text-dark text-center col-sm-5" *ngFor="let collegue of collegues | slice:0:limite">
+      <img class="card-img-top" src="{{ collegue.urlImage }}" alt="Image" (click)="detail(collegue)">
+      <div class="card-body">
+        <h4 class="card-title">{{ collegue.nom | uppercase }}</h4>
+        <p class="card-text" [ngStyle]="{'color': collegue.score > 0 ? 'green' : (collegue.score == 0 ? 'black' : 'red')}">{{ collegue.score | score }}</p>
+        <app-le-score [collegue]="collegue" (choix)="action($event)"></app-le-score>
+      </div>
+    </div>
+    <hr>
+    <app-dernier-avis [collegue]="collegue" [aimerOuDetester]="aimerOuDetester"></app-dernier-avis>
+  </div>
+  <div class="col-3">
+    <app-historique-votes class="float-right"></app-historique-votes>
   </div>
 </div>
-<hr>
-<app-dernier-avis [collegue]="collegue" [aimerOuDetester]="aimerOuDetester"></app-dernier-avis>

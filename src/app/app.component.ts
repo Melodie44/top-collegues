@@ -1,10 +1,11 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Collegue } from './shared/domain/collegue';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { CollegueService } from './shared/service/collegue.service'
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,11 @@ export class AppComponent implements OnInit {
   // TODO Ajouter un champ collegues qui est de type Tableau de Collegue
   collegues: Collegue[];
   success: HTMLDivElement;
+  @Input() heLigne: boolean;
+  ajoutCollegueForm = new FormGroup({
+    pseudo: new FormControl(),
+    imageUrl: new FormControl()
+  });
 
   constructor(private cService: CollegueService, public route: ActivatedRoute, private router: Router) { }
 
@@ -49,8 +55,6 @@ export class AppComponent implements OnInit {
   }
 
   horsEnLigne(event){
-   // let buttons:HTMLButtonElement[] = document.querySelectorAll("button");
-    
-    
+    this.heLigne = event;
   }
 }

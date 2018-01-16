@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Collegue } from '../domain/collegue';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 
@@ -56,7 +55,6 @@ export class CollegueService {
   }
 
   horsEnLigne(): Observable<boolean>{
-    
     return this.isOnline.asObservable();
   }
 }

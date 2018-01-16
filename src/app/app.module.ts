@@ -17,6 +17,9 @@ import { FiltreComponent } from './filtre/filtre.component';
 import { DernierAvisComponent } from './dernier-avis/dernier-avis.component';
 import { HorsEnLigneComponent } from './hors-en-ligne/hors-en-ligne.component'
 import { HorsEnLigneService } from './shared/service/hors-en-ligne.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HistoriqueVotesComponent } from './historique-votes/historique-votes.component';
+import { HistoriqueVotesService } from './shared/service/historique-votes.service'
 
 const appRoutes: Routes = [
   { path: 'classique', component: UnCollegueComponent},
@@ -37,15 +40,18 @@ const appRoutes: Routes = [
     ScorePipe,
     FiltreComponent,
     HorsEnLigneComponent,
-    DernierAvisComponent
+    DernierAvisComponent,
+    HistoriqueVotesComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [CollegueService, HorsEnLigneService],
+  providers: [CollegueService, HorsEnLigneService, HistoriqueVotesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
