@@ -16,6 +16,7 @@ import { ScorePipe } from './shared/pipe/score.pipe';
 import { FiltreComponent } from './filtre/filtre.component';
 import { DernierAvisComponent } from './dernier-avis/dernier-avis.component';
 import { HorsEnLigneComponent } from './hors-en-ligne/hors-en-ligne.component'
+import { HorsEnLigneService } from './shared/service/hors-en-ligne.service';
 
 const appRoutes: Routes = [
   { path: 'classique', component: UnCollegueComponent},
@@ -35,8 +36,8 @@ const appRoutes: Routes = [
     UnCollegueDetailComponent,
     ScorePipe,
     FiltreComponent,
-    DernierAvisComponent,
-    HorsEnLigneComponent
+    HorsEnLigneComponent,
+    DernierAvisComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CollegueService],
+  providers: [CollegueService, HorsEnLigneService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

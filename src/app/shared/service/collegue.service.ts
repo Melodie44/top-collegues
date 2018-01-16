@@ -9,9 +9,11 @@ import { HttpErrorResponse } from '@angular/common/http/src/response';
 export class CollegueService {
 
   collegues: BehaviorSubject<Collegue[]> = new BehaviorSubject([]);
+  isOnline: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(navigator.onLine);
 
   constructor(private http: HttpClient) {
     this.refreshData();
+    Observable.interval(5000).map(() => navigator.onLine).subscribe(v => this.isOnline.next(v));
   }
 
   refreshData() {
@@ -54,6 +56,7 @@ export class CollegueService {
   }
 
   horsEnLigne(): Observable<boolean>{
-    return Observable.interval(5000).map(v => navigator.onLine);
+    
+    return this.isOnline.asObservable();
   }
 }

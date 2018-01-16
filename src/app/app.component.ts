@@ -47,4 +47,10 @@ export class AppComponent implements OnInit {
 
     return false; // pour éviter le rechargement de la page
   }
+
+  horsEnLigne(event){
+   // let buttons:HTMLButtonElement[] = document.querySelectorAll("button");
+    
+    
+  }
 }

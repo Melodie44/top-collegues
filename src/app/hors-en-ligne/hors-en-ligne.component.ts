@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CollegueService } from '../shared/service/collegue.service'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { HorsEnLigneService } from '../shared/service/hors-en-ligne.service'
 
 @Component({
   selector: 'app-hors-en-ligne',
@@ -8,15 +8,17 @@ import { CollegueService } from '../shared/service/collegue.service'
 })
 export class HorsEnLigneComponent implements OnInit {
 
-  heLigne: boolean;
-  
+  heLigne: boolean = true;
+  @Output() horsEnLigne: EventEmitter<boolean> = new EventEmitter<boolean>()
 
-  constructor(public cService: CollegueService) {
+  constructor(public horsEnLigneService: HorsEnLigneService) {
     
-   }
+  }
 
   ngOnInit() {
-    this.cService.horsEnLigne().subscribe(v => this.heLigne = v)
+    
+    this.horsEnLigneService.isOnlineObs.subscribe(v => this.heLigne = v);
+    this.horsEnLigne.emit(this.heLigne);
   }
 
 }
