@@ -18,16 +18,11 @@ export class UnCollegueCarrouselComponent implements OnInit {
   constructor(private cService: CollegueService, public route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-
-    /*this.cService.listerCollegues().then(result => {
-      this.collegues = result;
-    });*/
     this.cService.listerCollegues()
                  .subscribe(c => this.collegues = c, e => console.log(e));
   }
 
   detail(col) {
-
     this.router.navigate(['/detail', col['nom']]);
   }
 

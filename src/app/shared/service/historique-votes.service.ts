@@ -7,13 +7,12 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class HistoriqueVotesService {
 
   votes: BehaviorSubject<Vote[]> = new BehaviorSubject([]);
-  lesVotes: Vote[]
 
   constructor(private http: HttpClient) {
     
     this.refreshData();
 
-    Observable.interval(5000).mergeMap(() => this.listerVotes(0)).subscribe(v => this.votes.next(v));
+    Observable.interval(5000).map(() => this.votes.getValue()).subscribe(v => this.votes.next(v));
   }
 
   refreshData(){

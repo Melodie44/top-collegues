@@ -25,7 +25,7 @@ export class LeScoreComponent implements OnInit {
 
   ngOnInit() {
 
-    this.avis['message'] = '';
+    //this.avis['message'] = '';
   }
 
   jaime() {
